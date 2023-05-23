@@ -1,8 +1,11 @@
 import express, { Application } from 'express';
-import productRouter from '../routes/product';
 import alumnoRouter from '../routes/alumno';
-import sequelize from '../db/connection';
+import docentesRouter from '../routes/docente';
+import userRouter from '../routes/user';
 import cors from 'cors';
+import { User }from './user.model';
+import { Alumno }from './alumno.model';
+import { Docente } from './docente.model';
 
 class Server{
 
@@ -25,8 +28,9 @@ class Server{
 
     route()
     {
-      //this.app.use('/api/products', productRouter);  
-      this.app.use('/api/alumnos', alumnoRouter);  
+      this.app.use('/api/users', userRouter);  
+      this.app.use('/api/alumnos', alumnoRouter);
+      this.app.use('/api/docentes', docentesRouter);
     }
 
     middleware()
@@ -38,7 +42,10 @@ class Server{
     async dbConnect()
     {
       try {
-        await sequelize.authenticate();
+        //await sequelize.authenticate();
+        await User.sync();
+        await Alumno.sync();
+        await Docente.sync();
         console.log('Connection has been established successfully.');
       } catch (error) {
         console.error('Unable to connect to the database:', error);

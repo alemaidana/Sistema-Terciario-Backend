@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAlumnos } from "../controllers/alumnos.controller";
+import { getDocentes } from "../controllers/docentes.controller";
 import validateToken from './validate';
 
 const router = Router();
 
-router.get('/', validateToken, getAlumnos)
+router.get('/', validateToken, getDocentes)
 
 export default router;
