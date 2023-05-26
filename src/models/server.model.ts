@@ -1,11 +1,13 @@
 import express, { Application } from 'express';
-import alumnoRouter from '../routes/alumno';
-import docentesRouter from '../routes/docente';
+import alumnoRouter from '../routes/alumno.route';
+import docenteRouter from '../routes/docente.route';
 import userRouter from '../routes/user';
+import materiaRouter from '../routes/materia.route';
 import cors from 'cors';
 import { User }from './user.model';
 import { Alumno }from './alumno.model';
 import { Docente } from './docente.model';
+import { Materia } from './materia.model';
 
 class Server{
 
@@ -30,7 +32,8 @@ class Server{
     {
       this.app.use('/api/users', userRouter);  
       this.app.use('/api/alumnos', alumnoRouter);
-      this.app.use('/api/docentes', docentesRouter);
+      this.app.use('/api/docentes', docenteRouter);
+      this.app.use('/api/materias', materiaRouter);
     }
 
     middleware()
@@ -46,6 +49,7 @@ class Server{
         await User.sync();
         await Alumno.sync();
         await Docente.sync();
+        await Materia.sync();
         console.log('Connection has been established successfully.');
       } catch (error) {
         console.error('Unable to connect to the database:', error);
