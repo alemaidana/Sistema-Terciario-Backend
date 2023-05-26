@@ -1,27 +1,20 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
-import { Asignatura } from "./asignatura.model";
 
-export const Materia = sequelize.define('subject', {
+export const Asignatura = sequelize.define('asignatura', {
     id: { type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    nombre: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    curso: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    carreraId: {
+    subjectId: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
+    docenteId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
 },{
     createdAt: false,
     updatedAt: false
 });
-
-Asignatura.belongsTo(Materia);

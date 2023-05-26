@@ -1,10 +1,11 @@
 import { Materia } from "../models/materia.model";
+import { Carrera } from "../models/carrera.model";
 import { iMateria } from "../interfaces/materia.interface";
 
 
 export const getAllMateriasService = async () => {
     
-    const materia = await Materia.findAll();
+    const materia = await Materia.findAll({ include:Carrera });
     
     return materia;
 };
@@ -22,7 +23,7 @@ export const createMateriaService = async (materia:iMateria) => {
     {
         nombre: materia.nombre,
         curso: materia.curso,
-        carrera: materia.carrera
+        carrera: materia.carreraId
     });
 
     return dataNewMateria;
@@ -34,7 +35,7 @@ export const updateMateriaService = async (id:string, materia:iMateria) => {
         {
             nombre: materia.nombre,
             curso: materia.curso,
-            carrera: materia.carrera
+            carrera: materia.carreraId
         },
         {
          where: {id : id}

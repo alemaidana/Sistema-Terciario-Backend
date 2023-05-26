@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
+import { Asignatura } from "./asignatura.model";
 
 export const Docente = sequelize.define('docente', {
     id: { type: DataTypes.INTEGER,
@@ -30,3 +31,5 @@ export const Docente = sequelize.define('docente', {
     createdAt: false,
     updatedAt: false
 });
+
+Asignatura.belongsTo(Docente);

@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
-import { Asignatura } from "./asignatura.model";
+import { Materia } from "./materia.model";
 
-export const Materia = sequelize.define('subject', {
+export const Carrera = sequelize.define('carrera', {
     id: { type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -11,17 +11,9 @@ export const Materia = sequelize.define('subject', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    curso: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    carreraId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    }
 },{
     createdAt: false,
     updatedAt: false
 });
 
-Asignatura.belongsTo(Materia);
+Materia.belongsTo(Carrera);
