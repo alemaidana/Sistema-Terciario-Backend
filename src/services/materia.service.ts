@@ -5,9 +5,9 @@ import { iMateria } from "../interfaces/materia.interface";
 
 export const getAllMateriasService = async () => {
     
-    const materia = await Materia.findAll({ include:Carrera });
+    const materias = await Materia.findAll({ include:Carrera });
     
-    return materia;
+    return materias;
 };
 
 export const getOneMateriaService = async (id:string) => {

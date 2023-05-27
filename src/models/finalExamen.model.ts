@@ -1,19 +1,22 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
-import { ExamenesFinales } from "./finalExamen.model";
-import { NotaExamen } from "./notaExamen.model";
+import { RegistroDeExamen } from "./registroExamen.model";
 
-export const Asignatura = sequelize.define('asignatura', {
+export const ExamenesFinales = sequelize.define('final', {
     id: { type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    subjectId: {
+    asignaturaId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    docenteId: {
-        type: DataTypes.INTEGER,
+    primer_llamado: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    segundo_llamado: {
+        type: DataTypes.DATE,
         allowNull: false
     },
 },{
@@ -21,5 +24,4 @@ export const Asignatura = sequelize.define('asignatura', {
     updatedAt: false
 });
 
-ExamenesFinales.belongsTo(Asignatura);
-NotaExamen.belongsTo(Asignatura);
+RegistroDeExamen.belongsTo(ExamenesFinales);

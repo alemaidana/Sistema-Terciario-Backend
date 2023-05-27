@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
+import { NotaExamen } from "./notaExamen.model";
+import { RegistroDeExamen } from "./registroExamen.model";
 
 export const Alumno = sequelize.define('alumno', {
     id: { type: DataTypes.INTEGER,
@@ -14,6 +16,14 @@ export const Alumno = sequelize.define('alumno', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    legajo: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    dni: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     email: {
         type: DataTypes.STRING,
         allowNull: false
@@ -25,8 +35,19 @@ export const Alumno = sequelize.define('alumno', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    carreraId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 },{
     createdAt: false,
     updatedAt: false
 });
+
+NotaExamen.belongsTo(Alumno);
+RegistroDeExamen.belongsTo(Alumno);

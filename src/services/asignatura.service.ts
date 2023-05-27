@@ -6,16 +6,16 @@ import { Materia } from "../models/materia.model";
 
 export const getAllAsignaturasService = async () => {
     
-    const asignturas = await Asignatura.findAll({ include: [Materia, Docente] });
+    const asignaturas = await Asignatura.findAll({ include: [Materia, Docente] });
     
-    return asignturas;
+    return asignaturas;
 };
 
 export const getOneAsignaturaService = async (id:string) => {
 
-    const asigntura = await Asignatura.findOne({ include: [Materia, Docente], where: { id: id } });
+    const asignatura = await Asignatura.findOne({ include: [Materia, Docente], where: { id: id } });
     
-    return asigntura;
+    return asignatura;
 };
 
 export const createAsignaturaService = async (asignatura:iAsignatura) => {
