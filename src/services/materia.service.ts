@@ -5,49 +5,84 @@ import { iMateria } from "../interfaces/materia.interface";
 
 export const getAllMateriasService = async () => {
     
-    const materias = await Materia.findAll({ include:Carrera });
-    
-    return materias;
+    try {
+        const materias = await Materia.findAll({ include:Carrera });
+        
+        return materias;
+        
+    } catch (error) {
+        
+        throw error;
+    }
+
 };
 
 export const getOneMateriaService = async (id:string) => {
 
-    const materia = await Materia.findOne({ where: { id: id } });
-    
-    return materia;
+    try {
+        const materia = await Materia.findOne({ where: { id: id } });
+        
+        return materia;
+        
+    } catch (error) {
+        
+        throw error;
+    }
+
 };
 
 export const createMateriaService = async (materia:iMateria) => {
     
-    const dataNewMateria = await Materia.create(
-    {
-        nombre: materia.nombre,
-        curso: materia.curso,
-        carrera: materia.carreraId
-    });
+    try {
+        const dataNewMateria = await Materia.create(
+        {
+            nombre: materia.nombre,
+            curso: materia.curso,
+            carrera: materia.carreraId
+        });
+    
+        return dataNewMateria;
+        
+    } catch (error) {
+        
+        throw error;
+    }
 
-    return dataNewMateria;
 };
 
 export const updateMateriaService = async (id:string, materia:iMateria) => {
 
-    const updatedMateria = await Materia.update(
+    try {
+        const updatedMateria = await Materia.update(
         {
             nombre: materia.nombre,
             curso: materia.curso,
             carrera: materia.carreraId
         },
         {
-         where: {id : id}
+            where: {id : id}
         });
+    
+        return updatedMateria;    
+        
+    } catch (error) {
+        
+        throw error;
+    }
 
-    return updatedMateria;    
 };
 
 
 export const deleteMateriaService = async (id:string) => {
 
-    const deletedMateria = await Materia.destroy({ where: { id: id } });
+    try {
+        const deletedMateria = await Materia.destroy({ where: { id: id } });
+    
+        return deletedMateria;
+        
+    } catch (error) {
+        
+        throw error;
+    }
 
-    return deletedMateria;
 };

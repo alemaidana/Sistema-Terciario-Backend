@@ -4,38 +4,57 @@ import bcrypt from 'bcrypt';
 
 export const getAllDocentesService = async () => {
     
-    const docentes = await Docente.findAll();
-    
-    return docentes;
+    try {
+        const docentes = await Docente.findAll();
+        
+        return docentes;
+        
+    } catch (error) {
+        
+        throw error;
+    }
 };
 
 export const getOneDocenteService = async (id:string) => {
 
-    const docente = await Docente.findOne({ where: { id: id } });
-    
-    return docente;
+    try {
+        const docente = await Docente.findOne({ where: { id: id } });
+        
+        return docente;
+        
+    } catch (error) {
+        
+        throw error;
+    }
 };
 
 export const createDocenteService = async (docente:iDocente) => {
     
-    const hashedPassword = await bcrypt.hash(docente.password,10);
-
-    const dataNewDocente = await Docente.create({
-        nombre: docente.nombre,
-        apellido: docente.apellido,
-        email: docente.email,
-        telefono: docente.telefono,
-        password: hashedPassword,
-    });
-
-    return dataNewDocente;
+    try {
+        const hashedPassword = await bcrypt.hash(docente.password,10);
+    
+        const dataNewDocente = await Docente.create({
+            nombre: docente.nombre,
+            apellido: docente.apellido,
+            email: docente.email,
+            telefono: docente.telefono,
+            password: hashedPassword,
+        });
+    
+        return dataNewDocente;
+        
+    } catch (error) {
+        
+        throw error;
+    }
 };
 
 export const updateDocenteService = async (id:string, docente:iDocente) => {
 
-    const hashedPassword = await bcrypt.hash(docente.password,10);
-
-    const updatedDocente = await Docente.update(
+    try {
+        const hashedPassword = await bcrypt.hash(docente.password,10);
+    
+        const updatedDocente = await Docente.update(
         {
             nombre: docente.nombre,
             apellido: docente.apellido,
@@ -44,16 +63,28 @@ export const updateDocenteService = async (id:string, docente:iDocente) => {
             password: hashedPassword,
         },
         {
-         where: {id : id}
+            where: {id : id}
         });
+    
+        return updatedDocente;    
+        
+    } catch (error) {
+        
+        throw error;
+    }
 
-    return updatedDocente;    
 };
 
 
 export const deleteDocenteService = async (id:string) => {
 
-    const deletedDocente = await Docente.destroy({ where: { id: id } });
-
-    return deletedDocente;
+    try {
+        const deletedDocente = await Docente.destroy({ where: { id: id } });
+    
+        return deletedDocente;
+        
+    } catch (error) {
+        
+        throw error;
+    }
 };

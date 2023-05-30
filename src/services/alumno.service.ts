@@ -11,6 +11,7 @@ export const getAllAlumnosService = async () => {
         return alumnos;
 
     } catch (error) {
+        
         throw error;
     }
 };
@@ -23,6 +24,7 @@ export const getOneAlumnoService = async (id:string) => {
         return alumno;
         
     } catch (error) {
+        
         throw error;
     }
 };
@@ -47,6 +49,7 @@ export const createAlumnoService = async (alumno:iAlumno) => {
         return dataNewAlumno;
         
     } catch (error) {
+        
         throw error;
     }
 
@@ -76,6 +79,7 @@ export const updateAlumnoService = async (id:string, alumno:iAlumno) => {
         return updatedAlumno;    
         
     } catch (error) {
+        
         throw error;
     }
 
@@ -90,6 +94,7 @@ export const deleteAlumnoService = async (id:string) => {
         return deletedAlumno;
         
     } catch (error) {
+        
         throw error;
     }
 };
