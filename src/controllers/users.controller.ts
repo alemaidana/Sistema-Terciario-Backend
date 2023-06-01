@@ -26,7 +26,7 @@ export const newUser = async (req:Request, res:Response) => {
         });
        
         res.json({
-            message:`User ${username} created successfully`, 
+            msg:`User ${username} created successfully`, 
         });
 
     } catch (error) {

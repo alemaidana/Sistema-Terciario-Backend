@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import alumnoRouter from '../routes/alumno.route';
 import docenteRouter from '../routes/docente.route';
-import userRouter from '../routes/user';
+import userRouter from '../routes/user.route';
 import materiaRouter from '../routes/materia.route';
 import carreraRouter from '../routes/carrera.route';
 import asignaturaRouter from '../routes/asignatura.route';
@@ -18,6 +18,7 @@ import { Asignatura } from './asignatura.model';
 import { RegistroDeExamen } from './registroExamen.model';
 import { NotaExamen } from './notaExamen.model';
 import { ExamenesFinales } from './finalExamen.model';
+
 class Server{
 
     private app:Application;
