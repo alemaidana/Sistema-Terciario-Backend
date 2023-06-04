@@ -15,6 +15,14 @@ export const Docente = sequelize.define('docente', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    matricula: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    dni: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     email: {
         type: DataTypes.STRING,
         allowNull: false
@@ -24,6 +32,18 @@ export const Docente = sequelize.define('docente', {
         allowNull: false
     },
     password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    f_nac: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    avatar: {
         type: DataTypes.STRING,
         allowNull: false
     }

@@ -40,8 +40,20 @@ export const Alumno = sequelize.define('alumno', {
         type: DataTypes.BOOLEAN,
         allowNull: false
     },
+    f_nac: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    curso: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     carreraId: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    avatar: {
+        type: DataTypes.STRING,
         allowNull: false
     }
 },{
